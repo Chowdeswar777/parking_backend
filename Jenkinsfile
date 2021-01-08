@@ -18,7 +18,7 @@ node('master'){
                           input "Deploy the app?"
         }
 	            stage('Deploy'){
-             sh '/opt/maven/bin/mvn deploy'
+             sh '/opt/maven/bin/mvn clean deploy -DaltDeploymentRepository=internal.repo::default::http://admin:admin123@18.223.2.70:8081/nexus/content/repositories/snapshots/'
          }
 	
 	stage('Running java backend application'){
