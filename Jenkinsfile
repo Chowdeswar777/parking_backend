@@ -24,4 +24,10 @@ node('master'){
 	stage('Running java backend application'){
 	sh 'export JENKINS_NODE_COOKIE=dontKillMe ;nohup java -Dspring.profiles.active=uat -jar $WORKSPACE/target/*.jar &'
 	}
+	stage('Slack it'){
+           
+                slackSend channel: '#jenkins', 
+                          message: 'Parking backend application deployed  completed successfully'
+            
+        }
 	}
